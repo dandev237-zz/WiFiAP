@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace WiFiAP
@@ -17,6 +15,24 @@ namespace WiFiAP
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+            //WifiController wc = new WifiController();
+        }
+    }
+
+    public class WifiController
+    {
+        public WifiController()
+        {
+            System.Console.WriteLine("funciona");
+            string arguments = "wlan stop hostednetwork";
+            ProcessStartInfo procStartInfo = new ProcessStartInfo("netsh", arguments);
+
+            procStartInfo.RedirectStandardOutput = true;
+            procStartInfo.UseShellExecute = false;
+            procStartInfo.CreateNoWindow = true;
+
+            System.Console.WriteLine(Process.Start(procStartInfo));
         }
     }
 }
