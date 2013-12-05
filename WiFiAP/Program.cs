@@ -19,7 +19,7 @@ namespace WiFiAP
         {
             // Before start, checks if program has been run as admin
 
-            if (false /*!checkAdmin()*/)
+            if (!checkAdmin())
             {
                 MessageBox.Show(ApplicationName + " has not been run with admin privileges",
                     "Admin check failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
