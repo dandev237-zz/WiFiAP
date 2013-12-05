@@ -35,10 +35,10 @@ namespace WiFiAP
         // StopAP button
         private void button2_Click(object sender, EventArgs e)
         {
-            this.button1.Enabled = false;
+            this.button2.Enabled = false;
             this.label3.Text = wc.StopAP();
             this.label2.Text = wc.getStatus();
-            this.button1.Enabled = true;
+            this.button2.Enabled = true;
         }
 
         // StartAP button
