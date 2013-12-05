@@ -19,7 +19,7 @@ namespace WiFiAP
         {
             // Before start, checks if program has been run as admin
 
-            if (!checkAdmin())
+            if (false /*!checkAdmin()*/)
             {
                 MessageBox.Show(ApplicationName + " has not been run with admin privileges",
                     "Admin check failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -30,7 +30,7 @@ namespace WiFiAP
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 WifiController wc = new WifiController();
-                Application.Run(new Form1());
+                Application.Run(new MainPanel());
                 
             }      
         }
@@ -112,6 +112,20 @@ namespace WiFiAP
             int aux = res.IndexOf(status) + status.Length;
             res = res.Substring(aux, res.IndexOf("\n",aux) - aux);
             
+            return res;
+        }
+
+        public String getSSID()
+        {
+            string res = "UNKNOWN";
+
+            res = controller("show hostednetwork");
+
+            string status = "Nombre de SSID       : ";
+
+            int aux = res.IndexOf(status) + status.Length + 1;
+            res = res.Substring(aux, res.IndexOf("\n", aux) - aux-2);
+
             return res;
         }
 
