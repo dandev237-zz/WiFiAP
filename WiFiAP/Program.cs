@@ -19,7 +19,7 @@ namespace WiFiAP
         {
             // Before start, checks if program has been run as admin
 
-            if (false /*!checkAdmin()*/)
+            if (!checkAdmin())
             {
                 MessageBox.Show(ApplicationName + " has not been run with admin privileges",
                     "Admin check failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -47,7 +47,6 @@ namespace WiFiAP
     {
         public WifiController()
         {
-            Console.WriteLine(getStatus());
         }
 
         /// <summary>
@@ -86,7 +85,16 @@ namespace WiFiAP
             string res = "FAIL";
 
             res = controller("start hostednetwork");
+            Console.WriteLine(res);
+            return res;
+        }
 
+        public String StopAP()
+        {
+            string res = "FAIL";
+
+            res = controller("stop hostednetwork");
+            Console.WriteLine(res);
             return res;
         }
 
@@ -102,7 +110,7 @@ namespace WiFiAP
             string status = "Estado                 : ";
 
             int aux = res.IndexOf(status) + status.Length;
-            res = res.Substring(aux);
+            res = res.Substring(aux, res.IndexOf("\n",aux) - aux);
             
             return res;
         }

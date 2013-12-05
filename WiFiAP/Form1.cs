@@ -17,16 +17,14 @@ namespace WiFiAP
             InitializeComponent();
         }
 
-        // StartAP button
         private void button1_Click(object sender, EventArgs e)
         {
-            label3.Text = wc.StartAP();
-            label2.Text = wc.getStatus();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            label2.Text = wc.getStatus();
+            this.label2.Text = wc.getStatus();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -34,10 +32,22 @@ namespace WiFiAP
 
         }
 
-        // StopAP
+        // StopAP button
         private void button2_Click(object sender, EventArgs e)
         {
+            this.button1.Enabled = false;
+            this.label3.Text = wc.StopAP();
+            this.label2.Text = wc.getStatus();
+            this.button1.Enabled = true;
+        }
 
+        // StartAP button
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.button1.Enabled = false;
+            this.label3.Text = wc.StartAP();
+            this.label2.Text = wc.getStatus();
+            this.button1.Enabled = true;
         }
     }
 }
